@@ -1,0 +1,118 @@
+//1509853G-I011-0202  WANG,JINGQING Íõ¾¸Çå
+Q1; *p3=S
+    *p3=T,p3=6940
+    *p1=S,p1=6940
+
+Q2: D
+
+Q3: p should be an 'char*' type.
+
+Q4£ºA
+    C
+    B
+    A
+    4435
+    B
+    C
+    4434
+    B    
+    C
+    C
+    C
+
+Q5£º#include<iostream>
+
+      int main() {    
+
+	using namespace std;
+    
+	char s[10] = "abcde"; 
+        char* cptr=&s[9];
+        char temp;
+	int i=strlen(s);
+
+	for(i;i<10;i++){	
+	temp=*(cptr-i);
+	cout<<temp;	
+	}
+
+    return 0;
+         }
+
+Q6£ºint fun(int*a,int n){
+
+	int i;
+	int even=0;
+	for(i=0;i<n;i++){
+		if(a[i]%2==0)
+			even=even+1;
+	}
+	return even;
+      }
+
+Q7£ºdouble* maximum(double* a, int size)
+       {   
+	int j;
+	double *temp,*b;
+	b=a;
+
+	for(j=0;j<size;j++){    	
+	temp=a+j;
+	if(*b<*temp)b=temp;	
+	else continue;
+	}
+
+	return b;
+      }
+
+Q8£º int myStrLen(char *str){
+     int i=0;
+     while(*(i+str)!='\0')
+          i++;
+
+     return i;}
+
+Q9£º#include <stdio.h>
+    #include <string.h>
+    #include <iostream>
+    using namespace std;
+
+   int contains(char str[],char substr[],char*p,char*q){
+    
+	while(*(p+strlen(substr)-1)){
+          p++;
+     for(q=substr;*p==*q&&*q;p++,q++);
+	{  if(!*q)
+       return 1;
+                  
+	 }//end of the for loop
+      }//end of the while loop
+   }//end of contains funtion
+
+int main(void)
+{
+    char str1[] = "waterproof" ; 
+	char  str2 []= "proof" ; 
+    char *a=str1;
+    char *b=str2;
+    int n=contains(str1,str2,a,b);
+    if(n==1)cout<<"string2 is exist in string1.";
+	else cout<<"string1 doesn't have string2.";
+	
+		return 0;
+}
+
+Q10£º
+
+    void revString(char* str) {   
+    
+     char temp;
+	int i=0;
+	while(*(str+i)!='\0')i++;
+     char* cptr=&str[i];
+	for(int j=1;j<=i;j++){	
+	temp=*(cptr-j);
+	cout<<temp;	
+	}
+     }
+

@@ -1,0 +1,180 @@
+Lab pointers
+1.
+  *p3 = S
+  *p3 = T, p3 = 6940
+  *p1 = S, p1 = 6940
+  
+2.
+  D
+  
+3. c is a character variable and p is a pointer to double.
+&c and p are of different types: compilation error.
+  
+4.
+	char blocks[3] = { 'A', 'B', 'C' };
+	char *ptr = &blocks[0];
+	char temp;
+	cout << (int)blocks << endl;
+
+	temp = blocks[0];   //	A
+	temp = *(blocks + 2);	//C
+	temp = *(ptr + 1);	//B
+	temp = *ptr;	//A
+
+	ptr = blocks + 1;	//4435
+	temp = *ptr;	//B
+	temp = *(ptr + 1);	//C
+
+	ptr = blocks;	//4434
+	temp = *++ptr;	//B
+	temp = ++*ptr;	//C
+	temp = *ptr++;	//C
+	temp = *ptr;	//C	
+
+
+5.
+
+#include <iostream>
+using namespace std;
+
+int main(){
+	char s[10] = "abcde";
+	char* cptr;
+
+	for (int i = 1; i <= strlen(s); i++)
+	{
+		char b;
+		b = *(s + strlen(s) - i);
+		cout << b;
+	}
+
+	return 0;
+}
+
+6. 
+#include <iostream>
+using namespace std;
+int countEven(int *a, int size);
+
+int main(){
+	int a[] = { 10, 145, 3, 5, 456, 15, 478, 65, 48, 1, 98, 12, 79 };
+	int b = countEven(a, 13);
+	cout << b;
+	cin >> b;
+
+	return 0;
+}
+int countEven(int *a, int size){
+	int sum = 0;
+	for (int i = 0; i<size; i++){
+		if (a[i] % 2 == 0){
+			sum++;
+		}
+	}
+	return sum;
+}
+
+
+7.
+
+#include <iostream>
+using namespace std;
+double* maximum(double* a, int size);
+
+int main(){
+	double a[] = {1, 10, 7, 5, 3, 2};
+	double *b = maximum(a, 6);
+	cout << *b;
+	return 0;
+}
+
+double *maximum(double* a, int size){
+    
+    if(size==0)
+        return NULL;
+    
+    double *max = a;
+    for(int i = 1;i<size;i++)       
+        if (*max < a[i])
+            max = a + i;
+        
+    return max;
+}
+
+
+8.
+
+#include<iostream>
+using namespace std;
+
+int myStrLen(const char* str)
+{
+    int length = 0;
+    
+  
+    while (*str != '\0') {
+        length++;
+        str++;
+    }
+    
+    return length;
+
+}
+
+int main(){
+   char c[10]="abcdef";
+    int len = myStrLen(c);
+    cout << "The length of "<<c<<" is " << len ;
+}
+
+
+9.
+
+#include <iostream>
+using namespace std;
+bool contains(char*, char);
+
+int main(){
+	char a[10] = "abcdef";
+	char b='e';
+	if (contains(a, b) == true)
+		cout << "true";
+	else
+		cout << "false";
+
+	return 0;
+}
+bool contains(char* first, char second){
+	for (int i = 0; i < strlen(first); i++){
+		if (first[i] == second)
+			return true;
+	}
+	return false;
+}
+
+
+10.
+
+
+#include <iostream>
+using namespace std;
+void revString(char* ptr)
+{
+    char *x, *y;
+    x = ptr;
+    y = ptr+(strlen(ptr)-1);
+    
+    while (x < y) {
+        char temp = *x;
+        *x = *y;
+        *y = temp;
+        x++;
+        y--;
+    }
+}
+
+int main(){
+    char s[10] = "abcde";
+    revString(s);
+    cout <<"Reverses: "<< s << endl;
+}

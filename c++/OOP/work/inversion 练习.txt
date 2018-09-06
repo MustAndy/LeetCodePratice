@@ -1,0 +1,84 @@
+#include<iostream>
+#include<cstdlib>
+#include<cmath>
+#include<string>
+#include<fstream>
+using namespace std;
+
+int caculate(string a);
+void swap(string stringarray[],int numarray[],int i,int j) ;
+
+int main()
+{
+	int m,n,i,j;
+	int *number;//Dynamic integer array
+
+	string *DNAGroup;  //Dynamic string array              
+	
+	cout<<"please input the lenth of DNA: ";
+	cin>>m;
+	cout<<"please input the amount of DNA: ";
+	cin>>n;
+	
+	DNAGroup= new string[n];
+
+	number=new int [n];
+		
+	for(j=0;j<n;j++)
+	{
+	   cin>>DNAGroup[j];
+	}	
+	
+	for(j=0;j<n;j++)
+	{
+	   number[j]=caculate(DNAGroup[j]);
+	}
+	
+	for(j=0;j<n-1;++j)
+	{
+		for(i=(j+1);i<n;++i)
+		{
+			if(number[j]>number[i])			
+				swap(DNAGroup,number,i,j);			
+		}
+	}
+
+   cout<<endl;
+
+   for(j=0;j<n;j++)
+	{		
+	   cout<<DNAGroup[j]<<endl;
+	}
+
+	return 0;
+}
+
+int caculate(string a)
+{
+	int m,n,count,i,j;
+	count=0;
+	m =a.length();
+
+	for(i=0;i<m;i++)
+	{
+		for(j=(i+1);j<m;j++)
+		{
+			if(a[i]>a[j])
+				count+=1;
+		}
+	}
+	return count;
+}
+
+void swap(string stringarray[],int numarray[],int i,int j)  
+{  
+    int tmp=numarray[i];  
+    numarray[i]=numarray[j];  
+    numarray[j]=tmp;  
+
+	string b;
+	b=stringarray[i];
+	stringarray[i]=stringarray[j];
+	stringarray[j]=b;
+
+}  
