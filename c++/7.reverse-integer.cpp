@@ -39,9 +39,10 @@
  * overflows.
  * 
  */
-class Solution {
-public:
-    int reverse(int x) {
-        
+class Solution
+{
+  public:
+    int reverse(int x)
+    {
     }
 };
