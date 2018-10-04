@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong
+ * @Date: 2018-09-19 16:56:40
+ * @Last Modified by:   AndyWong
+ * @Last Modified time: 2018-09-19 16:56:40
+ */
+/*
  * [7] Reverse Integer
  *
  * https://leetcode.com/problems/reverse-integer/description/
@@ -42,30 +48,26 @@
 
 #include <limits.h>
 
-class Solution
-{
-  public:
-    int reverse(int x)
-    {
-        bool isNegi = false;
-        if (x < 0)
-        {
-            x *= -1;
-            isNegi = true;
-        }
-        int result = 0;
-        while (x != 0)
-        {
-            int pop = x % 10;
-            x /= 10;
-            if (result > INT_MAX / 10 || (result == INT_MAX / 10 && pop > 7))
-                return 0;
-            if (result < INT_MIN / 10 || (result == INT_MIN / 10 && pop < -8))
-                return 0;
-            result = result * 10 + pop;
-        }
-        if (isNegi)
-            result *= -1;
-        return result;
+class Solution {
+public:
+  int reverse(int x) {
+    bool isNegi = false;
+    if (x < 0) {
+      x *= -1;
+      isNegi = true;
     }
+    int result = 0;
+    while (x != 0) {
+      int pop = x % 10;
+      x /= 10;
+      if (result > INT_MAX / 10 || (result == INT_MAX / 10 && pop > 7))
+        return 0;
+      if (result < INT_MIN / 10 || (result == INT_MIN / 10 && pop < -8))
+        return 0;
+      result = result * 10 + pop;
+    }
+    if (isNegi)
+      result *= -1;
+    return result;
+  }
 };

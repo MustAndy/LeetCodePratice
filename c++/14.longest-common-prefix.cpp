@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong 
+ * @Date: 2018-09-19 16:56:18 
+ * @Last Modified by: AndyWong
+ * @Last Modified time: 2018-09-19 16:57:00
+ */
+/*
  * [14] Longest Common Prefix
  *
  * https://leetcode.com/problems/longest-common-prefix/description/

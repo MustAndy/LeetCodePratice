@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong 
+ * @Date: 2018-09-19 16:55:46 
+ * @Last Modified by:   AndyWong 
+ * @Last Modified time: 2018-09-19 16:55:46 
+ */
+/*
  * [822] Unique Morse Code Words
  *
  * https://leetcode.com/problems/unique-morse-code-words/description/
@@ -55,28 +61,31 @@
 #include <vector>
 using namespace std;
 
-static string code[26] = {".-",   "-...", "-.-.", "-..",  ".",    "..-.", "--.",
-                          "....", "..",   ".---", "-.-",  ".-..", "--",   "-.",
-                          "---",  ".--.", "--.-", ".-.",  "...",  "-",    "..-",
-                          "...-", ".--",  "-..-", "-.--", "--.."};
-class Solution {
-public:
-  int uniqueMorseRepresentations(vector<string> &words) {
-    vector<string> result;
+static string code[26] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
+                          "....", "..", ".---", "-.-", ".-..", "--", "-.",
+                          "---", ".--.", "--.-", ".-.", "...", "-", "..-",
+                          "...-", ".--", "-..-", "-.--", "--.."};
+class Solution
+{
+  public:
+    int uniqueMorseRepresentations(vector<string> &words)
+    {
+        vector<string> result;
 
-    for (int i = 0; i < words.size(); i++) {
-      string temp;
-      for (int j = 0; j < words[i].length(); j++)
-        temp += code[words[i][j] - 97];
-      int Vectorlength = result.size();
-      bool isSame = false;
-      for (int l = 0; l < Vectorlength; l++)
-        if (temp == result[l])
-          isSame = true;
-      if (isSame == false)
-        result.push_back(temp);
+        for (int i = 0; i < words.size(); i++)
+        {
+            string temp;
+            for (int j = 0; j < words[i].length(); j++)
+                temp += code[words[i][j] - 97];
+            int Vectorlength = result.size();
+            bool isSame = false;
+            for (int l = 0; l < Vectorlength; l++)
+                if (temp == result[l])
+                    isSame = true;
+            if (isSame == false)
+                result.push_back(temp);
+        }
+
+        return result.size();
     }
-
-    return result.size();
-  }
 };

@@ -2,40 +2,42 @@
  * @Author: AndyWong
  * @Date: 2018-09-10 15:39:28
  * @Last Modified by: AndyWong
- * @Last Modified time: 2018-09-10 17:28:27
+ * @Last Modified time: 2018-09-19 17:25:28
  */
 #include <algorithm>
 #include <iostream>
 #include <limits.h>
+#include <stdio.h>
+#include <string>
 #include <vector>
-
 using namespace std;
+
 class Solution
 {
   public:
-    int mySqrt(int x)
+    int singleNumber(vector<int> &nums)
     {
-        long long int mult;
-        if (x > 2147395600)
-            return 46340;
-        for (int i = 0; i <= x; i++)
+        int a = 0, b = 0;
+        for (int i = 0; i < nums.size(); ++i)
         {
-            mult = i * i;
-            if (mult == x)
-                return i;
-            else if (mult > x)
-                return i - 1;
+            b = (b ^ nums[i]) & ~a;
+            a = (a ^ nums[i]) & ~b;
         }
-        return 0;
+        return b;
     }
 };
-
 int main()
 {
-    Solution temp;
-    int a = 2147483646;
-
-    int result = temp.mySqrt(a);
-    cout << result;
+    Solution temp1;
+    vector<int> temp;
+    temp.push_back(2);
+    temp.push_back(4);
+    temp.push_back(2);
+    temp.push_back(4);
+    temp.push_back(3);
+    temp.push_back(2);
+    temp.push_back(4);
+    int result = temp1.singleNumber(temp);
+    cout << (3 ^ 5) << (7 & 6) << (7 | 6);
     return 0;
 }

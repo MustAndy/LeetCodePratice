@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong 
+ * @Date: 2018-09-19 16:56:35 
+ * @Last Modified by: AndyWong
+ * @Last Modified time: 2018-09-19 16:56:58
+ */
+/*
  * [8] String to Integer (atoi)
  *
  * https://leetcode.com/problems/string-to-integer-atoi/description/

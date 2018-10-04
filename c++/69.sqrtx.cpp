@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong
+ * @Date: 2018-09-19 16:55:51
+ * @Last Modified by: AndyWong
+ * @Last Modified time: 2018-09-19 16:57:05
+ */
+/*
  * [69] Sqrt(x)
  *
  * https://leetcode.com/problems/sqrtx/description/
@@ -38,48 +44,41 @@
 #include <string>
 
 using namespace std;
-class Solution
-{
-  public:
-    int mySqrt1(int x)
-    {
-        long long int mult;
-        if (x > 2147395600)
-            return 46340;
-        if (x == 1 || x == 2 || x == 3)
-            return 1;
-        for (int i = 0; i <= x; i++)
-        {
-            mult = i * i;
-            if (mult == x)
-                return i;
-            else if (mult > x)
-                return i - 1;
-        }
-        return 0;
+class Solution {
+public:
+  int mySqrt1(int x) {
+    long long int mult;
+    if (x > 2147395600)
+      return 46340;
+    if (x == 1 || x == 2 || x == 3)
+      return 1;
+    for (int i = 0; i <= x; i++) {
+      mult = i * i;
+      if (mult == x)
+        return i;
+      else if (mult > x)
+        return i - 1;
     }
-    int mySqrt2(int x)
-    {
-        if (x <= 1)
-            return x;
-        int left = 0, right = x;
-        while (left < right)
-        {
-            int mid = left + (right - left) / 2;
-            if (x / mid >= mid)
-                left = mid + 1;
-            else
-                right = mid;
-        }
-        return right - 1;
+    return 0;
+  }
+  int mySqrt2(int x) {
+    if (x <= 1)
+      return x;
+    int left = 0, right = x;
+    while (left < right) {
+      int mid = left + (right - left) / 2;
+      if (x / mid >= mid)
+        left = mid + 1;
+      else
+        right = mid;
     }
-    int mySqrt(int x)
-    {
-        long res = x;
-        while (res * res > x)
-        {
-            res = (res + x / res) / 2;
-        }
-        return res;
+    return right - 1;
+  }
+  int mySqrt(int x) {
+    long res = x;
+    while (res * res > x) {
+      res = (res + x / res) / 2;
     }
+    return res;
+  }
 };

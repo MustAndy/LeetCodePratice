@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong 
+ * @Date: 2018-09-19 16:56:45 
+ * @Last Modified by:   AndyWong 
+ * @Last Modified time: 2018-09-19 16:56:45 
+ */
+/*
  * [6] ZigZag Conversion
  *
  * https://leetcode.com/problems/zigzag-conversion/description/
@@ -58,25 +64,28 @@
 #include <string>
 #include <vector>
 using namespace std;
-class Solution {
-public:
-  string convert(string s, int nRows) {
-    if (nRows == 1)
-      return s;
-    int len = s.size(), k = 0, interval = (nRows << 1) - 2;
-    string res(len, ' ');
-    for (int j = 0; j < len; j += interval) //处理第一行
-      res[k++] = s[j];
-    for (int i = 1; i < nRows - 1; i++) //处理中间行
+class Solution
+{
+  public:
+    string convert(string s, int nRows)
     {
-      int inter = (i << 1);
-      for (int j = i; j < len; j += inter) {
-        res[k++] = s[j];
-        inter = interval - inter;
-      }
+        if (nRows == 1)
+            return s;
+        int len = s.size(), k = 0, interval = (nRows << 1) - 2;
+        string res(len, ' ');
+        for (int j = 0; j < len; j += interval) //处理第一行
+            res[k++] = s[j];
+        for (int i = 1; i < nRows - 1; i++) //处理中间行
+        {
+            int inter = (i << 1);
+            for (int j = i; j < len; j += inter)
+            {
+                res[k++] = s[j];
+                inter = interval - inter;
+            }
+        }
+        for (int j = nRows - 1; j < len; j += interval) //处理最后一行
+            res[k++] = s[j];
+        return res;
     }
-    for (int j = nRows - 1; j < len; j += interval) //处理最后一行
-      res[k++] = s[j];
-    return res;
-  }
 };

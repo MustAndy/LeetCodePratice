@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong
+ * @Date: 2018-09-19 16:55:58
+ * @Last Modified by: AndyWong
+ * @Last Modified time: 2018-09-19 16:57:03
+ */
+/*
  * [58] Length of Last Word
  *
  * https://leetcode.com/problems/length-of-last-word/description/
@@ -28,30 +34,26 @@
 #include <string>
 using namespace std;
 
-class Solution
-{
-  public:
-    int lengthOfLastWord(string s)
-    {
-        if (s.length() == 0)
-            return 0;
+class Solution {
+public:
+  int lengthOfLastWord(string s) {
+    if (s.length() == 0)
+      return 0;
 
-        int length = s.length() - 1;
-        int counter = 0;
-        int i = length;
-        while (s[i] == 32 && i != -1)
-        {
-            i--;
-        }
-
-        for (i; i >= 0; i--)
-        {
-
-            if (s[i] != 32)
-                counter++;
-            if (s[i] == 32)
-                break;
-        }
-        return counter;
+    int length = s.length() - 1;
+    int counter = 0;
+    int i = length;
+    while (s[i] == 32 && i != -1) {
+      i--;
     }
+
+    for (i; i >= 0; i--) {
+
+      if (s[i] != 32)
+        counter++;
+      if (s[i] == 32)
+        break;
+    }
+    return counter;
+  }
 };

@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong
+ * @Date: 2018-09-19 16:55:54
+ * @Last Modified by: AndyWong
+ * @Last Modified time: 2018-09-19 16:57:04
+ */
+/*
  * [66] Plus One
  *
  * https://leetcode.com/problems/plus-one/description/
@@ -41,62 +47,54 @@
 #include <vector>
 using namespace std;
 
-class Solution
-{
-  public:
-    vector<int> plusOne1(vector<int> &digits)
-    {
-        vector<int> result, temp;
-        int adder = 0;
-        int limits;
+class Solution {
+public:
+  vector<int> plusOne1(vector<int> &digits) {
+    vector<int> result, temp;
+    int adder = 0;
+    int limits;
 
-        digits[(digits.size() - 1)]++;
+    digits[(digits.size() - 1)]++;
 
-        for (int i = digits.size() - 1; i >= 1; i--)
-        {
-            digits[i] += adder;
-            adder = 0;
-            if ((digits[i]) == 10)
-            {
-                digits[i] = 0;
-                temp.push_back(0);
-                adder++;
-                continue;
-            }
-            temp.push_back(digits[i]);
-        }
-        if (((digits[0] == 9) && (adder == 1)) || (digits[0] == 10))
-        {
-            temp.push_back(0);
-            temp.push_back(1);
-        }
-        else
-            temp.push_back(digits[0] + adder);
-
-        // for (int i = temp.size() - 1; i >= 0; i--)
-        // {
-        //     result.push_back(temp[i]);
-        // }
-        reverse(temp.begin(), temp.end());
-        return temp;
+    for (int i = digits.size() - 1; i >= 1; i--) {
+      digits[i] += adder;
+      adder = 0;
+      if ((digits[i]) == 10) {
+        digits[i] = 0;
+        temp.push_back(0);
+        adder++;
+        continue;
+      }
+      temp.push_back(digits[i]);
     }
-    vector<int> plusOne(vector<int> &digits)
-    {
-        int i = digits.size() - 1;
-        int sum = 1;
-        int carry = 0;
+    if (((digits[0] == 9) && (adder == 1)) || (digits[0] == 10)) {
+      temp.push_back(0);
+      temp.push_back(1);
+    } else
+      temp.push_back(digits[0] + adder);
 
-        while (i >= 0)
-        {
-            sum += carry + digits[i];
-            digits[i--] = sum % 10;
-            carry = sum / 10;
-            sum = 0;
-        }
+    // for (int i = temp.size() - 1; i >= 0; i--)
+    // {
+    //     result.push_back(temp[i]);
+    // }
+    reverse(temp.begin(), temp.end());
+    return temp;
+  }
+  vector<int> plusOne(vector<int> &digits) {
+    int i = digits.size() - 1;
+    int sum = 1;
+    int carry = 0;
 
-        if (carry > 0)
-            digits.insert(digits.begin(), carry);
-
-        return digits;
+    while (i >= 0) {
+      sum += carry + digits[i];
+      digits[i--] = sum % 10;
+      carry = sum / 10;
+      sum = 0;
     }
+
+    if (carry > 0)
+      digits.insert(digits.begin(), carry);
+
+    return digits;
+  }
 };

@@ -1,4 +1,10 @@
 /*
+ * @Author: AndyWong
+ * @Date: 2018-09-19 16:56:01
+ * @Last Modified by: AndyWong
+ * @Last Modified time: 2018-09-19 16:57:03
+ */
+/*
  * [28] Implement strStr()
  *
  * https://leetcode.com/problems/implement-strstr/description/
@@ -42,37 +48,31 @@
 #include <string>
 
 using namespace std;
-class Solution
-{
-  public:
-    int strStr(string haystack, string needle)
-    {
+class Solution {
+public:
+  int strStr(string haystack, string needle) {
 
-        if ((haystack.length() == 0 && needle.length() == 0) || needle.length() == 0)
-        {
-            return 0;
-        }
-
-        bool isSame = true;
-        int length = haystack.length();
-        int tarlength = needle.length();
-        for (int i = 0; i < length; i++)
-        {
-            if (haystack[i] == needle[0])
-            {
-                isSame = true;
-                for (int j = 0; j < tarlength; j++)
-                {
-                    if (haystack[i + j] != needle[j])
-                    {
-                        isSame = false;
-                        break;
-                    }
-                }
-                if (isSame == true)
-                    return i;
-            }
-        }
-        return -1;
+    if ((haystack.length() == 0 && needle.length() == 0) ||
+        needle.length() == 0) {
+      return 0;
     }
+
+    bool isSame = true;
+    int length = haystack.length();
+    int tarlength = needle.length();
+    for (int i = 0; i < length; i++) {
+      if (haystack[i] == needle[0]) {
+        isSame = true;
+        for (int j = 0; j < tarlength; j++) {
+          if (haystack[i + j] != needle[j]) {
+            isSame = false;
+            break;
+          }
+        }
+        if (isSame == true)
+          return i;
+      }
+    }
+    return -1;
+  }
 };
