@@ -9,35 +9,32 @@
 #include <limits.h>
 #include <stdio.h>
 #include <string>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
 class Solution
 {
   public:
-    int singleNumber(vector<int> &nums)
+    int firstUniqChar(string s)
     {
-        int a = 0, b = 0;
-        for (int i = 0; i < nums.size(); ++i)
+        unordered_map<char, int> m;
+        for (char c : s)
+            ++m[c];
+        for (int i = 0; i < s.size(); ++i)
         {
-            b = (b ^ nums[i]) & ~a;
-            a = (a ^ nums[i]) & ~b;
+            if (m[s[i]] == 1)
+                return i;
         }
-        return b;
+        return -1;
     }
 };
+
 int main()
 {
     Solution temp1;
-    vector<int> temp;
-    temp.push_back(2);
-    temp.push_back(4);
-    temp.push_back(2);
-    temp.push_back(4);
-    temp.push_back(3);
-    temp.push_back(2);
-    temp.push_back(4);
-    int result = temp1.singleNumber(temp);
-    cout << (3 ^ 5) << (7 & 6) << (7 | 6);
+
+    int result = temp1.firstUniqChar("aabbab");
+    cout << result;
     return 0;
 }

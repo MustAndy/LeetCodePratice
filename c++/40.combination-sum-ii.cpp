@@ -51,30 +51,36 @@
 #include <algorithm>
 #include <vector>
 using namespace std;
-class Solution {
-public:
-  void combinationSum2DFS(vector<int> num, int target, int level,
-                          vector<int> &tempres, vector<vector<int>> &result) {
-    if (target < 0)
-      return;
-    else if (target == 0){
-      result.push_back(tempres);
-    } else {
-      for (int i = level; i < num.size(); ++i) {
-        if (i > level && num[i] == num[i - 1])
-          continue;
-        tempres.push_back(num[i]);
-        combinationSum2DFS(num, target - num[i], i + 1, tempres, result);
-        tempres.pop_back();
-      }
+class Solution
+{
+  public:
+    vector<vector<int>> combinationSum2(vector<int> &candidates, int target)
+    {
+        vector<vector<int>> result;
+        vector<int> tempres;
+        sort(candidates.begin(), candidates.end());
+        combinationSum2DFS(candidates, target, 0, tempres, result);
+        return result;
     }
-  }
-
-  vector<vector<int>> combinationSum2(vector<int> &candidates, int target) {
-    vector<vector<int>> result;
-    vector<int> tempres;
-    combinationSum2DFS(candidates, target, 0, tempres, result);
-    sort(candidates.begin(), candidates.end());
-    return result;
-  }
+    void combinationSum2DFS(vector<int> num, int target, int level,
+                            vector<int> &tempres, vector<vector<int>> &result)
+    {
+        if (target < 0)
+            return;
+        else if (target == 0)
+        {
+            result.push_back(tempres);
+        }
+        else
+        {
+            for (int i = level; i < num.size(); ++i)
+            {
+                if (i > level && num[i] == num[i - 1])
+                    continue;
+                tempres.push_back(num[i]);
+                combinationSum2DFS(num, target - num[i], i + 1, tempres, result);
+                tempres.pop_back();
+            }
+        }
+    }
 };
