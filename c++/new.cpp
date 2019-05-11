@@ -1,40 +1,36 @@
+
 /*
- * @Author: AndyWong
- * @Date: 2018-09-10 15:39:28
- * @Last Modified by: AndyWong
- * @Last Modified time: 2018-09-19 17:25:28
- */
-#include <algorithm>
+Time:2016-9-8 15:48:57
+Author:CodingMengmeng
+*/
 #include <iostream>
-#include <limits.h>
 #include <stdio.h>
-#include <string>
-#include <unordered_map>
+#include <string.h>
 #include <vector>
 using namespace std;
+void f(int a[], int i, int j)
 
-class Solution
 {
-  public:
-    int firstUniqChar(string s)
+
+    int t;
+
+        if (i < j)
     {
-        unordered_map<char, int> m;
-        for (char c : s)
-            ++m[c];
-        for (int i = 0; i < s.size(); ++i)
-        {
-            if (m[s[i]] == 1)
-                return i;
-        }
-        return -1;
+        t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+        f(a, i + 1, j - 1);
     }
-};
+}
 
 int main()
-{
-    Solution temp1;
 
-    int result = temp1.firstUniqChar("aabbab");
-    cout << result;
-    return 0;
+{
+
+    int i, a[5] = {1, 2, 3, 4, 5} ;
+
+               f(a, 0, 4) ;
+
+           for (i = 0; i < 5; i++) printf("%d, ", a[i]) ;
+           return 0;
 }

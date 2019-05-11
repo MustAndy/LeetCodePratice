@@ -8,7 +8,8 @@
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "__x86_64__",
+                "_GNU_SOURCE"
             ],
             "intelliSenseMode": "msvc-x64"
         }
