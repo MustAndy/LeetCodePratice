@@ -43,8 +43,19 @@
 using namespace std;
 class Solution
 {
-  public:
+public:
     string longestPalindrome(string s)
+    {
+        const int length = s.length();
+        if (s.length() == 1)
+            return s;
+
+        int max_s = 0, max_l = 0;
+        for (int i = 0; i < length;)
+        {
+        }
+    }
+    string longestPalindrome1(string s)
     {
 
         int length = s.length();
